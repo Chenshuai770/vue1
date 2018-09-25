@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue入门</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div>
+
+    <!--<div id="app">
+        {{ message }}
+    </div>
+
+    <script src="index.js"></script>-->
+
+    <!--挂载点<div div>,模板{{}}},实例,插值表带是-->
+
+    <div id="root">
+        <!--<h1>hello {{number}}</h1>-->
+        <div @click="handleClick">{{message}}</div>
+    </div>
+
+    <script>
+        new Vue({
+            el: "#root",
+            /*template:'<h1>hello  {{message}}</h1>',*/
+            data: {
+                message: "World",
+                number: 123
+            },
+            methods: {
+                handleClick: function () {
+                    this.message="高手"
+                }
+            }
+        })
+    </script>
+
+
+</div>
+</body>
+</html>

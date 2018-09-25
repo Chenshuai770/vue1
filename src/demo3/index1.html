@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>v-if,v-show,v-for 指令</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        姓: <input v-model="firstName"/>
+        名: <input v-model="lastName"/>
+        <div>{{fullName}}</div>
+
+    </div>
+
+    <script>
+        new Vue({
+            el: "#root",
+            data(){
+                return{
+                    firstName: '',
+                    lastName: ''
+                }
+            },
+            computed: {
+                fullName: function () {
+                    return this.firstName + ' ' + this.lastName
+                }
+            }
+        })
+    </script>
+
+</body>
+</html>
