@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VueModlue=</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <div>{{name +" Lee"}}</div>
+    <div v-text="name + ' leee'"></div>
+    <div v-html="name"></div>
+</div>
+
+<script>
+    var vm = new Vue({
+        el: "#app",
+        data:{
+            name:"Dell"
+        }
+
+    })
+
+
+</script>
+
+</body>
+</html>

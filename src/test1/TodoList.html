@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TodoList</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <input type="text" v-model="inputValue"/>
+    <button @click="handleClick">提交</button>
+    <ul>
+        <!--<todo-item v-for="(item,index) of list"
+            :key="index"
+            :content="content"
+            :index="index"
+            @delete="deleteClick">{{item}}
+        </todo-item>-->
+        <todo-item v-for="(item,index) of list" :key="index"
+                   v-bind:content="item"
+                   v-bind:index="index"
+                   @delete="handleItemClick"
+        >{{item}}
+        </todo-item>
+
+
+    </ul>
+
+    <script>
+
+        <!--
+        全局组件-->
+        // Vue.component("TodoItem", {
+        //     props:["content"],
+        //     template: " <li> {{content}} </li>"
+        //
+        // })
+        <!--局部组件 需要在vue里面注册-->
+        var TodoItem = {
+            props: ['content', 'index'],
+            template: " <li @click='handleItemClick'> {{content}} </li>",
+            methods: {
+                handleItemClick: function () {
+                    this.$emit("delete", this.index)//  子组件向外传值 并传递参数
+                }
+            }
+        }
+
+        var app = new Vue({
+            el: "#app",
+            components: {
+                TodoItem: TodoItem
+            },
+            data: {
+                inputValue: '',
+                list: []
+            },
+            methods: {
+                handleClick: function () {
+                    this.list.push(this.inputValue)
+                    this.inputValue = ''
+                },
+                handleItemClick: function (index) {
+                    this.list.splice(index, 1)
+                }
+            }
+        })
+    </script>
+</div>
+
+</body>
+</html>

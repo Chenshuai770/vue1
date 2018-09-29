@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VueCalculate</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+<body>
+
+<div id="app">
+    <!--{{fullName}} -->
+    <!--{{fullName()}}-->
+    {{fullName}}
+</div>
+
+<script>
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            firstName: "Dell",
+            lastName: "Lee",
+            age: 24
+        },
+        /*computed: {
+            fullName: function () {
+                return this.firstName + " " + this.lastName
+            }
+        }*/
+        /* methods: {
+             fullName: function () {
+                 return this.firstName + " " + this.lastName;
+             }
+         }*/
+        watch: {
+            firstName: function () {
+                this.fullName = this.firstName + " " + this.lastName
+            },
+            lastName: function () {
+                this.fullName = this.firstName + " " + this.lastName
+            }
+        }
+
+    })
+</script>
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VueGetAndSet</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+<body>
+
+<div id="app">
+    <!--{{fullName}} -->
+    <!--{{fullName()}}-->
+    {{fullName}}
+</div>
+
+<script>
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            firstName: "Dell",
+            lastName: "Lee",
+            age: 24
+        },
+        computed: {
+            fullName: {
+                get: function () {
+                    return this.firstName + " " + this.lastName
+                },
+                set:function (value) {
+                    //console.log("set  "+value)
+                    var arr=value.split("");
+                    this.firstName=arr[0];
+                    this.lastName=arr[1];
+                }
+            }
+        }
+
+
+    })
+</script>
+
+</body>
+</html>
